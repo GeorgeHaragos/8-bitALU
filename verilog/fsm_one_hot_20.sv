@@ -10,9 +10,7 @@ module fsm_one_hot_20 (
   output reg  [20:0]stare
 );
 
-    // =========================================================================
-    // 1. Definirea stărilor (Codificare One-Hot: un singur bit este '1' pe rând)
-    // =========================================================================
+
   localparam [20:0]
         S0  = 21'h000001,
         S1  = 21'h000002,
@@ -39,9 +37,7 @@ module fsm_one_hot_20 (
     // Registre pentru starea curentă și starea următoare
   reg [20:0] current_state, next_state;
 
-    // =========================================================================
-    // 2. Blocul Secvențial: Actualizarea stării la fiecare front de ceas
-    // =========================================================================
+
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             current_state <= S0; // Starea inițială sigură la reset
@@ -50,11 +46,9 @@ module fsm_one_hot_20 (
         end
     end
 
-    // =========================================================================
-    // 3. Blocul Combinațional: Logica de tranziție (Starea următoare)
-    // =========================================================================
+ 
     always @(*) begin
-        // Valoare implicită pentru a evita inferarea de latch-uri
+       
         next_state = current_state;
 
         case (current_state)
@@ -137,15 +131,12 @@ module fsm_one_hot_20 (
             S19: next_state = S20; 
             S20: next_state = S0;
 
-            // GOOD PRACTICE: Pentru One-Hot, `default` te salvează dacă FSM-ul 
-            // ajunge accidental într-o stare invalidă (ex: din cauza unor glitch-uri).
+            
             default: next_state = S0;
         endcase
     end
 
-    // =========================================================================
-    // 4. Logica de Ieșire (Exemplu: FSM de tip Moore)
-    // =========================================================================
+   
     assign stare=current_state;
 
 endmodule
