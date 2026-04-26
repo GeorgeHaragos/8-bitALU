@@ -71,22 +71,22 @@ set_global_assignment -name SYSTEMVERILOG_FILE tb_adunare.sv
 set_global_assignment -name EDA_TEST_BENCH_NAME tb_adunare -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_adunare
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_adunare -section_id tb_adunare
-set_global_assignment -name EDA_TEST_BENCH_FILE tb_adunare.sv -section_id tb_adunare
 set_global_assignment -name EDA_TEST_BENCH_NAME tb_scadere -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_scadere
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_scadere -section_id tb_scadere
-set_global_assignment -name EDA_TEST_BENCH_FILE tb_scadere.sv -section_id tb_scadere
 set_global_assignment -name EDA_TEST_BENCH_NAME tb_inmultire -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_inmultire
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_inmultire -section_id tb_inmultire
-set_global_assignment -name EDA_TEST_BENCH_FILE tb_inmultire.sv -section_id tb_inmultire
 set_global_assignment -name EDA_TEST_BENCH_NAME tb_impartire -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id tb_impartire
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME tb_impartire -section_id tb_impartire
-set_global_assignment -name EDA_TEST_BENCH_FILE tb_impartire.sv -section_id tb_impartire
 set_global_assignment -name SYSTEMVERILOG_FILE mux.sv
 set_global_assignment -name SYSTEMVERILOG_FILE shift_register_9b.sv
 set_global_assignment -name SYSTEMVERILOG_FILE rcas_9b.sv
 set_global_assignment -name SYSTEMVERILOG_FILE demux.sv
 set_global_assignment -name SYSTEMVERILOG_FILE up_down_counter.sv
+set_global_assignment -name EDA_TEST_BENCH_FILE tb_adunare.sv -section_id tb_adunare
+set_global_assignment -name EDA_TEST_BENCH_FILE tb_scadere.sv -section_id tb_scadere
+set_global_assignment -name EDA_TEST_BENCH_FILE tb_inmultire.sv -section_id tb_inmultire
+set_global_assignment -name EDA_TEST_BENCH_FILE tb_impartire.sv -section_id tb_impartire
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

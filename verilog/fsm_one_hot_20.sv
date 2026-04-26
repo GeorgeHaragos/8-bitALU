@@ -7,35 +7,36 @@ module fsm_one_hot_20 (
   input  wire [2:0]X1,
   input  wire [1:0]X2,
   input  wire M7,
-  output reg  [20:0]stare
+  output reg  [21:0]stare
 );
 
 
-  localparam [20:0]
-        S0  = 21'h000001,
-        S1  = 21'h000002,
-        S2  = 21'h000004,
-        S3  = 21'h000008,
-        S4  = 21'h000010,
-        S5  = 21'h000020,
-        S6  = 21'h000040,
-        S7  = 21'h000080,
-        S8  = 21'h000100,
-        S9  = 21'h000200,
-        S10 = 21'h000400,
-        S11 = 21'h000800,
-        S12 = 21'h001000,
-        S13 = 21'h002000,
-        S14 = 21'h004000,
-        S15 = 21'h008000,
-        S16 = 21'h010000,
-        S17 = 21'h020000,
-        S18 = 21'h040000,
-        S19 = 21'h080000,
-		  S20 = 21'h100000;
+  localparam [21:0]
+        S0  = 22'h000001,
+        S1  = 22'h000002,
+        S2  = 22'h000004,
+        S3  = 22'h000008,
+        S4  = 22'h000010,
+        S5  = 22'h000020,
+        S6  = 22'h000040,
+        S7  = 22'h000080,
+        S8  = 22'h000100,
+        S9  = 22'h000200,
+        S10 = 22'h000400,
+        S11 = 22'h000800,
+        S12 = 22'h001000,
+        S13 = 22'h002000,
+        S14 = 22'h004000,
+        S15 = 22'h008000,
+        S16 = 22'h010000,
+        S17 = 22'h020000,
+        S18 = 22'h040000,
+        S19 = 22'h080000,
+		  S20 = 22'h100000,
+		  S21 = 22'h200000;
 
     // Registre pentru starea curentă și starea următoare
-  reg [20:0] current_state, next_state;
+  reg [21:0] current_state, next_state;
 
 
     always @(posedge clk or negedge rst_n) begin
@@ -116,7 +117,8 @@ module fsm_one_hot_20 (
                 else next_state = S17;
             end
             S14: next_state = S2;
-            S15: 
+				S15: next_state = S21;
+            S21: 
             begin
                 if(!CNT0) next_state = S16;
                 else next_state = S17;

@@ -4,7 +4,7 @@ module mux2_1(
   input sel,
   output X
   );
-  assign X = (sel == 1) ? A : B;
+  assign X = (sel == 1) ? B : A;
 endmodule
 
 module mux(

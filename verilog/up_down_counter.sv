@@ -16,7 +16,7 @@ module t_ff(
   end
 endmodule
 
-module up_down_counter(
+module up_down_counter3b( //up_down_counter nume(.clk(),.rst(),.M(),.en(),.Q());
   input clk,
   input rst,
   input M,
@@ -44,3 +44,35 @@ module up_down_counter(
   
 endmodule
 
+module up_down_counter4b( //up_down_counter nume(.clk(),.rst(),.M(),.en(),.Q());
+  input clk,
+  input rst,
+  input M,
+  input en,
+  output [3:0]Q
+  );
+  wire M_bar = ~M;
+  wire up_1, down_1;
+  wire up_2, down_2;
+  wire up_3, down_3;
+  wire [3:0]T;
+  
+  assign T[0]=en;
+  
+  assign up_1 = M & Q[0];
+  assign down_1 = M_bar & ~Q[0];
+  assign T[1] = en & (up_1 | down_1);
+  
+  assign up_2 = up_1 & Q[1];
+  assign down_2 = down_1 & ~Q[1];
+  assign T[2] = en & (up_2 | down_2);
+
+  assign up_3 = up_2 & Q[2];
+  assign down_3 = down_2 & ~Q[2];
+  assign T[3] = en & (up_3 | down_3);
+  
+  t_ff FF1(.clk(clk),.r(rst),.t(T[0]),.q(Q[0]),.q_barat());
+  t_ff FF2(.clk(clk),.r(rst),.t(T[1]),.q(Q[1]),.q_barat());
+  t_ff FF3(.clk(clk),.r(rst),.t(T[2]),.q(Q[2]),.q_barat());
+  t_ff FF4(.clk(clk),.r(rst),.t(T[3]),.q(Q[3]),.q_barat());
+endmodule
